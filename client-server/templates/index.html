@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Клиент-серверное приложение</title>
+    <link rel="icon" href="{{ url_for('static', filename='favicon.ico') }}">
+</head>
+<body>
+    <h2>Введите данные</h2>
+    <form action="/submit" method="post">
+        <lable>Количество котов:</lable>
+        <input type="number" name="amount">
+    </form>
+    {% if message %}
+        <h3>Коты:</h3>
+        <p>{{ message }}</p>
+        
+        {% for i in range(amount_response) %}
+            <img src="{{ url_for('static', filename='cat.png') }}" alt="Cat" width="100">
+        {% endfor %}
+    {% endif %}
+</body>
+</html>
